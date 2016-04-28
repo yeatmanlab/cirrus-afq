@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- Based on http://protonet.github.io/plupload/examples/drag_and_drop.html -->
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Cirrus AFQ</title>
+  <link rel=stylesheet type=text/css href='{{ url_for('static', filename='style.css')}}'>
+</head>
+
+  <body>
+    <h1>Cirrus AFQ</h1>
+
+    <div id="drop-target" style="position: relative; z-index: 0;">Drop your AFQ data folder here </div>
+
+    <div id="debug">Something's wrong</div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plupload.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='plupload.html5.js')}}"></script>
+    <script type="text/javascript">
+      // Custom example logic
+      function $(id) {
+        return document.getElementById(id);
+      }
+
+      var uploader = new plupload.Uploader({
+        runtimes : 'html5',
+        drop_element : 'drop-target',
+        browse_button : 'drop-target',
+        max_file_size : '10mb',
+        upload : "upload.php"
+      });
+
+      uploader.bind('Init', function(up, params) {
+        if (uploader.features.dragdrop) {
+          $('debug').innerHTML = "";
+
+          var target = $("drop-target");
+
+          target.ondragover = function(event) {
+            event.dataTransfer.dropEffect = "copy";
+          };
+
+          target.ondragenter = function() {
+            this.className = "dragover";
+          };
+
+          target.ondragleave = function() {
+            this.className = "";
+          };
+
+          target.ondrop = function() {
+            this.className = "";
+          };
+        }
+      });
+
+      uploader.bind('FilesAdded', function(up, files) {
+        for (var i in files) {
+          $('debug').innerHTML += '<div id="' + files[i].id + '">- ' + files[i].relativePath + ' (' + plupload.formatSize(files[i].size) + ')</div>';
+        }
+      });
+
+      uploader.init();
+
+    </script><div id="p1ahekib9gi191fa21827129k1dpd0_html5_container" class="plupload html5" style="position: absolute; width: 620px; height: 320px; overflow: hidden; z-index: -1; opacity: 0; top: 40px; left: 410px; background: transparent;"><input id="p1ahekib9gi191fa21827129k1dpd0_html5" style="font-size: 999px; position: absolute; width: 100%; height: 100%;" type="file" accept="" multiple="multiple"></div>
+
+</body></html>

@@ -1,6 +1,12 @@
-body            { font-family: sans-serif; background: #eee; }
+body            { font-family: Verdana, Geneva, sans-serif; 
+				  background: url(bg.jpg); 
+				  font-size: 13px;
+				  color: #333;  
+				  width: 620px;
+				  margin: 40px auto;
+			  	  }
 a, h1, h2       { color: #377BA8; }
-h1, h2          { font-family: 'Helvetica', san-serif; margin: 0; }
+h1, h2          { font-family: Verdana, Geneva, san-serif; margin: 0; }
 h1              { border-bottom: 2px solid #eee; }
 h2              { font-size: 1.2em; }
 
@@ -16,3 +22,24 @@ h2              { font-size: 1.2em; }
 .flash          { background: #CEE5F5; padding: 0.5em;
                   border: 1px solid #AACBE2; }
 .error          { background: #F0D6D6; padding: 0.5em; }
+
+
+#drop-target {
+  border: 10px dashed #999;
+  text-align: center;
+  color: #999;
+  font-size: 20px;
+  width: 600px;
+  height: 300px;
+  line-height: 300px;
+  cursor: pointer;
+}
+
+#drop-target.dragover {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: green;
+}
+
+#debug {
+  margin-top: 20px;
+}

@@ -29,31 +29,11 @@ def upload_file():
 
     return render_template('layout.html')
 
-
-
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
 
-
-"""
-import matplotlib.pyplot as plt
-import numpy as np
-import flask
-app = flask.Flask(__name__)
-
-app.vars = {}
-
-
-@app.route('/index', methods=['GET', 'POST'])
-def index():
-    if flask.request.method == 'GET':
-        return flask.render_template('layout.html')
-    else:
-        return flask.render_template('layout.html')
-
-"""
 
 if __name__ == "__main__":
     app.run(debug=True)
